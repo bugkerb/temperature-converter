@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Temperature Converter | Convert Celsius, Fahrenheit & Kelvin Instantly</title>
+    <meta name="description" content="Convert temperatures between Celsius, Fahrenheit, and Kelvin instantly. Free online temperature converter with real-time conversion.">
+    <meta name="keywords" content="temperature converter, celsius to fahrenheit, fahrenheit to celsius, kelvin converter">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Temperature Converter | Convert Celsius, Fahrenheit & Kelvin Instantly">
+    <meta property="og:description" content="Convert temperatures between Celsius, Fahrenheit, and Kelvin instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://temperature-converter.vercel.app/">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Temperature Converter">
+    <meta name="twitter:description" content="Convert temperatures between Celsius, Fahrenheit, and Kelvin instantly.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://temperature-converter.vercel.app/">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --accent: #3b82f6;
+            --border: #e2e8f0;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            flex: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .converter-container {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .input-label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .input-wrapper {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .input-wrapper input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1.125rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .unit-badge {
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .reference-box {
+            background: var(--bg-primary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .reference-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .reference-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .reference-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .reference-item:last-child {
+            border-bottom: none;
+        }
+
+        .ref-label {
+            color: var(--text-secondary);
+        }
+
+        .ref-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .clear-btn {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 1.5rem;
+        }
+
+        .clear-btn:hover {
+            background: var(--border);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌡️ Temperature Converter</h1>
+            <p class="subtitle">Convert between Celsius, Fahrenheit & Kelvin instantly</p>
+        </header>
+
+        <main>
+            <div class="converter-container">
+                <div class="input-group">
+                    <label class="input-label" for="celsius">Celsius (°C)</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="celsius" placeholder="Enter temperature" step="any">
+                        <span class="unit-badge">°C</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label" for="fahrenheit">Fahrenheit (°F)</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="fahrenheit" placeholder="Enter temperature" step="any">
+                        <span class="unit-badge">°F</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label" for="kelvin">Kelvin (K)</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="kelvin" placeholder="Enter temperature" step="any">
+                        <span class="unit-badge">K</span>
+                    </div>
+                </div>
+
+                <button class="clear-btn" id="clear-btn">Clear All</button>
+            </div>
+
+            <div class="reference-box">
+                <div class="reference-title">📌 Quick Reference</div>
+                <div class="reference-list">
+                    <div class="reference-item">
+                        <span class="ref-label">Water Freezing Point</span>
+                        <span class="ref-value">0°C / 32°F / 273.15K</span>
+                    </div>
+                    <div class="reference-item">
+                        <span class="ref-label">Room Temperature</span>
+                        <span class="ref-value">20°C / 68°F / 293.15K</span>
+                    </div>
+                    <div class="reference-item">
+                        <span class="ref-label">Human Body Temperature</span>
+                        <span class="ref-value">37°C / 98.6°F / 310.15K</span>
+                    </div>
+                    <div class="reference-item">
+                        <span class="ref-label">Water Boiling Point</span>
+                        <span class="ref-value">100°C / 212°F / 373.15K</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>Real-time conversion • Instant results • No registration required</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
